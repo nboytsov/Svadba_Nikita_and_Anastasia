@@ -2,263 +2,844 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Никита ✧ Анастасия — 17 июля 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Caveat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Никита ✧ Анастасия | Свадебное приглашение</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #f9f5ec;
-      --paper: #fffdf7;
-      --text-dark: #2f2a1e;
-      --accent: #5f6f47;
-      --heart: #8b2f2f;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
+
     body {
-      font-family: 'Caveat', cursive;
-      background: var(--bg);
-      color: var(--text-dark);
-      line-height: 1.65;
+      background: linear-gradient(135deg, #eef0e5 0%, #e2e4d6 100%);
+      font-family: 'Inter', sans-serif;
       min-height: 100vh;
-      background-image: 
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.04"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>'),
-        linear-gradient(to bottom, #f9f5ec 0%, #f4efe0 100%);
-      background-attachment: fixed;
+      overflow-x: hidden;
     }
-    .container {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 80px 30px 120px;
-    }
-    header {
-      text-align: center;
-      padding: 120px 0 60px;
-    }
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 8.5rem;
-      color: var(--text-dark);
-      margin-bottom: 10px;
-      letter-spacing: 6px;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    .names {
-      font-family: 'Great Vibes', cursive;
-      font-size: 5.8rem;
-      margin: 20px 0 60px;
-      color: var(--accent);
-    }
-    .heart {
-      color: var(--heart);
-      font-size: 5.5rem;
-      margin: 0 35px;
-      animation: heartbeat 4s infinite ease-in-out;
-    }
-    @keyframes heartbeat {
-      0%,100% { transform: scale(1); }
-      50%     { transform: scale(1.08); }
-    }
-    .date {
-      font-family: 'Caveat', cursive;
-      font-size: 3.6rem;
-      color: var(--text-dark);
-      margin: 50px 0 80px;
-      letter-spacing: 3px;
-    }
-    .countdown {
-      font-size: 2.8rem;
-      margin: 70px 0 120px;
+
+    .envelope-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #2a2c22;
+      background: radial-gradient(circle at 30% 40%, #3a3c30, #1e201a);
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
+      z-index: 1000;
+      transition: opacity 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1), visibility 1.2s;
+      cursor: default;
     }
-    .countdown span {
-      background: rgba(95,111,71,0.08);
-      padding: 24px 32px;
-      border-radius: 18px;
-      min-width: 120px;
-      border: 1px dashed rgba(95,111,71,0.4);
-      transition: all 0.4s;
-    }
-    .countdown span:hover {
-      transform: translateY(-10px) rotate(2deg);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-    }
-    .section {
-      background: var(--paper);
-      border-radius: 28px;
-      padding: 60px 50px;
-      margin: 80px 0;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.08),
-                  inset 0 0 60px rgba(255,255,240,0.6);
-      border: 1px solid rgba(95,111,71,0.15);
+
+    .envelope-overlay.hidden {
       opacity: 0;
-      transform: translateY(30px) rotate(-1deg);
-      transition: all 1.1s ease-out;
+      visibility: hidden;
+      pointer-events: none;
     }
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0) rotate(0);
+
+    .envelope {
+      position: relative;
+      width: 420px;
+      height: 270px;
+      background: #6b7b52;
+      background: linear-gradient(145deg, #7e8f62, #5a6b41);
+      border-radius: 10px 10px 7px 7px;
+      box-shadow: 0 35px 55px rgba(0, 0, 0, 0.45), inset 0 1px 5px rgba(235, 245, 190, 0.3);
+      transition: transform 0.3s ease;
+      cursor: pointer;
     }
-    .section h2 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4.2rem;
-      color: var(--accent);
-      margin-bottom: 40px;
-      text-align: center;
-      letter-spacing: 2px;
+
+    .envelope::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: repeating-linear-gradient(45deg, rgba(90, 75, 40, 0.08) 0px, rgba(90, 75, 40, 0.08) 2px, transparent 2px, transparent 8px);
+      pointer-events: none;
+      border-radius: 10px;
     }
-    .info p, .wish p {
-      font-size: 1.85rem;
-      margin: 28px 0;
+
+    .envelope:hover {
+      transform: scale(1.01);
     }
-    .map-container {
-      height: 480px;
-      border-radius: 24px;
-      overflow: hidden;
-      margin: 50px 0;
-      border: 8px solid rgba(95,111,71,0.12);
-      box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: 2;
+      transition: transform 0.85s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-origin: top;
+      pointer-events: none;
     }
-    .rsvp {
-      text-align: center;
-      margin: 100px 0 60px;
+
+    .envelope-flap::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #8fa271, #5f6e48);
+      clip-path: polygon(0% 0%, 100% 0%, 50% 56%);
+      border-radius: 10px 10px 0 0;
+      box-shadow: inset 0 -4px 8px rgba(0,0,0,0.12);
     }
-    .btn {
-      font-family: 'Caveat', cursive;
-      display: inline-block;
-      padding: 22px 70px;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      font-size: 2.2rem;
-      border-radius: 999px;
-      margin: 25px;
-      transition: all 0.4s;
-      box-shadow: 0 12px 30px rgba(95,111,71,0.35);
+
+    .wax-seal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110px;
+      height: 110px;
+      background: #9e3026;
+      background: radial-gradient(circle at 35% 35%, #bc4c3a, #862a1f);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: 'Special Elite', 'Playfair Display', serif;
+      font-weight: bold;
+      color: #f7e6b3;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 190, 100, 0.5), 0 0 0 8px rgba(110, 65, 35, 0.35);
+      border: 1px solid rgba(240, 190, 100, 0.5);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 1px;
+      z-index: 3;
+    }
+
+    .wax-seal::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      background: radial-gradient(ellipse at 40% 45%, rgba(180, 70, 40, 0.35), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .wax-seal::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 2px rgba(255, 215, 130, 0.5), 0 0 0 1px rgba(0,0,0,0.25);
+      pointer-events: none;
+    }
+
+    .seal-text {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: rgba(70, 25, 15, 0.45);
+      padding: 6px 12px;
+      border-radius: 40px;
+      letter-spacing: 3.5px;
+      font-family: 'Special Elite', monospace;
+      color: #fff0c0;
+      margin-top: 6px;
+      backdrop-filter: blur(1px);
+    }
+
+    .seal-icon {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      line-height: 1;
+      font-weight: normal;
       letter-spacing: 1px;
     }
-    .btn:hover {
-      background: #6f7f57;
-      transform: translateY(-8px) scale(1.06) rotate(1deg);
-      box-shadow: 0 24px 50px rgba(95,111,71,0.5);
+
+    .wax-seal:hover {
+      transform: translate(-50%, -50%) scale(1.05);
+      background: radial-gradient(circle at 35% 35%, #cd624e, #9a3528);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.6), inset 0 0 18px rgba(255, 200, 100, 0.7);
     }
-    footer {
+
+    .envelope.open .envelope-flap {
+      transform: rotateX(180deg);
+    }
+
+    .main-content {
+      opacity: 0;
+      transition: opacity 1s ease 0.3s;
+    }
+
+    .main-content.visible {
+      opacity: 1;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 2rem 6rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle at 20% 35%, rgba(110, 95, 65, 0.05) 2%, transparent 2.5%),
+                        radial-gradient(circle at 75% 80%, rgba(85, 75, 50, 0.04) 1.5%, transparent 2%);
+      background-size: 55px 55px, 70px 70px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero {
       text-align: center;
-      padding: 120px 0 80px;
-      font-size: 2rem;
-      color: var(--text-dark);
-      opacity: 0.9;
+      padding: 1rem 1rem 1rem;
+      position: relative;
     }
-    @media (max-width: 768px) {
-      h1 { font-size: 6.2rem; }
-      .names { font-size: 4.4rem; }
-      .date { font-size: 2.8rem; }
-      .countdown { font-size: 2.2rem; gap: 25px; }
-      .countdown span { padding: 18px 24px; min-width: 100px; }
-      .section { padding: 50px 30px; margin: 60px 0; }
-      .btn { font-size: 2rem; padding: 18px 50px; }
+
+    .couple-photo {
+      width: 85%;
+      max-width: 550px;
+      margin: 1.5rem auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.25);
+      border: 3px solid #abb07c;
+      transition: transform 0.3s ease;
+    }
+
+    .couple-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .couple-photo:hover {
+      transform: scale(1.01);
+    }
+
+    .names-first {
+      margin: 0.5rem 0 0.5rem;
+    }
+
+    .names-modern {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: #545235;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .names-modern span {
+      background: rgba(100, 90, 60, 0.08);
+      padding: 0.2rem 1.3rem;
+      border-radius: 50px;
+      backdrop-filter: blur(2px);
+    }
+
+    .heart-icon {
+      display: inline-block;
+      font-size: 2.2rem;
+      color: #e34234;
+      animation: heartbeat 1.6s ease-in-out infinite;
+      filter: drop-shadow(0 4px 10px rgba(200, 60, 50, 0.3));
+      transform-origin: center;
+      line-height: 1;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      45% { transform: scale(1.22); }
+      65% { transform: scale(1.08); }
+    }
+
+    .greeting-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #5a553b;
+      background: rgba(245, 242, 230, 0.7);
+      padding: 1.5rem;
+      border-radius: 2rem;
+      margin: 1rem auto 1.5rem;
+      max-width: 600px;
+      font-style: italic;
+    }
+
+    .calendar-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+
+    .calendar-date-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fef7e0;
+      border-radius: 16px;
+      padding: 0.5rem 1.2rem;
+      min-width: 90px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #e0d5a8;
+      transition: all 0.2s ease;
+    }
+
+    .calendar-date-item.highlight {
+      background: #fff8e7;
+      border: 3px solid #e8a735;
+      box-shadow: 0 0 0 4px rgba(232, 167, 53, 0.3), 0 8px 20px rgba(0,0,0,0.1);
+      transform: scale(1.05);
+      position: relative;
+    }
+
+    .calendar-date-item.highlight::before {
+      content: "✧";
+      position: absolute;
+      top: -15px;
+      font-size: 1.5rem;
+      color: #e8a735;
+      text-shadow: 0 0 5px rgba(232,167,53,0.5);
+    }
+
+    .calendar-month {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #9e8e5a;
+      font-weight: 600;
+    }
+
+    .calendar-day {
+      font-size: 2rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      color: #7b6b3a;
+      line-height: 1;
+    }
+
+    .calendar-year {
+      font-size: 0.7rem;
+      color: #b0a26a;
+    }
+
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1.6rem;
+      flex-wrap: wrap;
+      margin: 2rem 0 2rem;
+    }
+
+    .cd-card {
+      background: rgba(245, 242, 230, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 1.8rem;
+      padding: 1.2rem 1.2rem;
+      min-width: 85px;
+      text-align: center;
+      box-shadow: 0 12px 28px -10px rgba(60, 55, 35, 0.15);
+      border: 1px solid #dbd4b5;
+      transition: all 0.3s ease;
+    }
+
+    .cd-card:hover {
+      transform: translateY(-6px);
+      background: #faf7e8;
+      border-color: #c2bb93;
+    }
+
+    .cd-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      color: #5e6240;
+      line-height: 1.1;
+    }
+
+    .cd-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+      color: #7b7351;
+      margin-top: 0.5rem;
+    }
+
+    .glass-card {
+      background: rgba(248, 245, 235, 0.88);
+      backdrop-filter: blur(10px);
+      border-radius: 2.2rem;
+      padding: 2rem 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 20px 35px -15px rgba(65, 60, 40, 0.12), 0 0 0 1px rgba(170, 155, 115, 0.25);
+      transition: transform 0.4s cubic-bezier(0.2,0.9,0.4,1.1), opacity 0.7s ease;
+      opacity: 0;
+      transform: translateY(26px);
+    }
+
+    .glass-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .glass-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      color: #5a5b3e;
+      text-align: center;
+      border-left: none;
+      padding-left: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.8rem 1rem;
+      background: rgba(215, 208, 175, 0.25);
+      border-radius: 1rem;
+      border-left: 3px solid #abb07c;
+    }
+
+    .timeline-time {
+      font-weight: 700;
+      color: #7e744b;
+      min-width: 100px;
+      font-size: 1.1rem;
+    }
+
+    .timeline-event {
+      color: #464832;
+      font-size: 1rem;
+    }
+
+    .dresscode-text {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #5a553b;
+      padding: 1rem;
+      font-style: italic;
+      background: rgba(215, 208, 175, 0.2);
+      border-radius: 1.5rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* СТИЛИ ДЛЯ ЦВЕТОВЫХ КРУЖКОВ - 4 ШТУКИ */
+    .dresscode-colors {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+      padding: 0;
+    }
+    .dresscode-colors li {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      list-style: none;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .dresscode-colors li:hover {
+      transform: scale(1.1);
+    }
+    .dresscode-colors li:nth-child(1) { background: #5a6b41; }
+    .dresscode-colors li:nth-child(2) { background: #7e8f62; }
+    .dresscode-colors li:nth-child(3) { background: #8fa271; }
+    .dresscode-colors li:nth-child(4) { background: #abb07c; }
+
+    .map-wrapper {
+      border-radius: 1.8rem;
+      overflow: hidden;
+      margin-top: 1rem;
+      box-shadow: 0 20px 30px -15px rgba(50, 45, 25, 0.2);
+      border: 2px solid #ddd49e;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 400px;
+      display: block;
+    }
+
+    .rsvp-section {
+      text-align: center;
+      margin: 3rem 0 1rem;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-modern {
+      background: #7b7a4f;
+      color: #fef9e6;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 14px rgba(85, 75, 35, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #dbd19b;
+    }
+
+    .btn-modern:hover {
+      background: #959464;
+      transform: translateY(-3px);
+      box-shadow: 0 16px 24px -10px rgba(80, 70, 30, 0.35);
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #928a62;
+      letter-spacing: 0.5px;
+      border-top: 1px solid rgba(140, 125, 80, 0.25);
+      padding-top: 2rem;
+    }
+
+    .floral-bg {
+      position: fixed;
+      top: 12%;
+      left: -3%;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(155, 145, 85, 0.07) 0%, rgba(0,0,0,0) 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .floral-bg-2 {
+      bottom: 8%;
+      right: -2%;
+      top: auto;
+      left: auto;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(125, 115, 65, 0.06) 0%, rgba(0,0,0,0) 70%);
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 1rem 1.2rem 4rem; }
+      .names-modern { font-size: 2rem; gap: 0.4rem; }
+      .heart-icon { font-size: 1.5rem; }
+      .cd-number { font-size: 1.8rem; }
+      .cd-card { padding: 0.8rem 0.6rem; min-width: 65px; }
+      .glass-card { padding: 1.3rem; }
+      .glass-card h2 { font-size: 1.4rem; }
+      .greeting-text { font-size: 1rem; padding: 1rem; }
+      .timeline-time { min-width: 70px; font-size: 0.9rem; }
+      .timeline-event { font-size: 0.85rem; }
+      .envelope { width: 300px; height: 195px; }
+      .wax-seal { width: 85px; height: 85px; }
+      .seal-text { font-size: 0.7rem; letter-spacing: 2px; padding: 3px 8px; }
+      .seal-icon { font-size: 1.3rem; }
+      .map-wrapper iframe { height: 300px; }
+      .couple-photo { width: 95%; border-radius: 18px; }
+      .calendar-date-item { padding: 0.3rem 0.8rem; min-width: 70px; }
+      .calendar-day { font-size: 1.5rem; }
+      .calendar-date-item.highlight { transform: scale(1.03); }
+      .dresscode-text { font-size: 1rem; }
+      .dresscode-colors li { width: 35px; height: 35px; }
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <header>
-    <h1>Мы женимся</h1>
-    <div class="names">Никита <span class="heart">♡</span> Анастасия</div>
-    <div class="date">17 июля 2026</div>
-  </header>
-
-  <div class="countdown" id="countdown">
-    <span id="days">00</span> дней
-    <span id="hours">00</span> часов
-    <span id="minutes">00</span> минут
-    <span id="seconds">00</span> секунд
-  </div>
-
-  <div class="section">
-    <h2>Когда и где</h2>
-    <div class="info">
-      <p>Мы будем очень рады видеть вас в этот день</p>
-      <p>Церемония и банкет пройдут в</p>
-      <p><strong>Гостинице «Октябрьская»</strong></p>
-      <p>Ульяновск, ул. Плеханова, д. 1</p>
+<!-- ОВЕРЛЕЙ КОНВЕРТА -->
+<div class="envelope-overlay" id="envelopeOverlay">
+  <div class="envelope" id="envelope">
+    <div class="envelope-flap"></div>
+    <div class="wax-seal" id="waxSeal">
+      <div class="seal-icon">✧</div>
+      <div class="seal-text">НАЖМИТЕ</div>
     </div>
   </div>
+</div>
 
-  <div class="section">
-    <h2>Что надеть</h2>
-    <div class="info">
-      <p>Мужчинам — чёрно-белый образ с элементами хаки</p>
-      <p>Женщинам — оттенки хаки</p>
+<!-- ОСНОВНОЕ ПРИГЛАШЕНИЕ -->
+<div class="main-content" id="mainContent">
+  <div class="floral-bg"></div>
+  <div class="floral-bg floral-bg-2"></div>
+
+  <div class="container">
+    <div class="hero">
+      <!-- ИМЕНА ПЕРВЫМИ -->
+      <div class="names-first">
+        <div class="names-modern">
+          <span>Никита</span>
+          <span class="heart-icon">❤️</span>
+          <span>Анастасия</span>
+        </div>
+      </div>
+
+      <!-- ФОТО -->
+      <div class="couple-photo">
+        <img src="https://lh3.googleusercontent.com/d/16iM-4UVsr-shE1gX7dEClTWdTJwrvNlC" alt="Никита и Анастасия">
+      </div>
+      
+      <!-- ТЕКСТ-ОБРАЩЕНИЕ -->
+      <div class="greeting-text">
+        «Да-да, это мы! Время пролетело так быстро, представляете? И вот мы повзрослели и приняли решение, что пора жениться! Приглашаем вас присоединиться к нашему первому семейному празднику – нашей свадьбе! Будем рады, если это событие вы разделите вместе с нами.»
+      </div>
+      
+      <!-- КАЛЕНДАРЬ С ОБВОДКОЙ -->
+      <div class="calendar-wrapper">
+        <div class="calendar-date-item">
+          <span class="calendar-month">Июль</span>
+          <span class="calendar-day">16</span>
+          <span class="calendar-year">2026</span>
+        </div>
+        <div class="calendar-date-item highlight">
+          <span class="calendar-month">Июль</span>
+          <span class="calendar-day">17</span>
+          <span class="calendar-year">2026</span>
+        </div>
+        <div class="calendar-date-item">
+          <span class="calendar-month">Июль</span>
+          <span class="calendar-day">18</span>
+          <span class="calendar-year">2026</span>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="section">
-    <h2>Наши маленькие пожелания</h2>
-    <div class="wish">
-      <p>Цветы, пожалуйста, не приносите ❤️</p>
-      <p>Вместо них будем счастливы получить бутылочку вашего любимого алкоголя</p>
+    <!-- ТАЙМЕР -->
+    <div class="countdown-grid" id="countdownGrid">
+      <div class="cd-card"><div class="cd-number" id="days">00</div><div class="cd-label">Дней</div></div>
+      <div class="cd-card"><div class="cd-number" id="hours">00</div><div class="cd-label">Часов</div></div>
+      <div class="cd-card"><div class="cd-number" id="minutes">00</div><div class="cd-label">Минут</div></div>
+      <div class="cd-card"><div class="cd-number" id="seconds">00</div><div class="cd-label">Секунд</div></div>
     </div>
-  </div>
 
-  <div class="section">
-    <h2>Как нас найти</h2>
-    <div class="map-container">
-      <!-- Вставьте здесь актуальный iframe от Яндекс.Карт -->
-      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aplaceholder&lang=ru_RU" width="100%" height="100%" frameborder="0"></iframe>
+    <!-- ТАЙМИНГ -->
+    <div class="glass-card" id="section-timing">
+      <h2>⏰ Тайминг</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">15:15</div>
+          <div class="timeline-event">Сбор гостей</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">15:30</div>
+          <div class="timeline-event">Фуршет</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">16:00</div>
+          <div class="timeline-event">Торжественная регистрация</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">17:00</div>
+          <div class="timeline-event">Банкет</div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="rsvp">
-    <h2>Скажите, пожалуйста, придёте ли вы</h2>
-    <a href="https://forms.gle/ВАША_ССЫЛКА_БУДУ" target="_blank" class="btn">Да, я буду! ✧</a>
-    <a href="https://forms.gle/ВАША_ССЫЛКА_НЕ_БУДУ" target="_blank" class="btn">К сожалению, не получится</a>
-  </div>
+    <!-- ДРЕСС-КОД С ЦВЕТОВЫМИ КРУЖКАМИ (4 ШТУКИ) -->
+    <div class="glass-card" id="section-dresscode">
+      <h2>Дресс-код</h2>
+      <div class="dresscode-text">
+        Мы старались сделать праздник красивым и будем рады, если вы поддержите цветовую гамму нашей свадьбы
+      </div>
+      <ul class="dresscode-colors">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
 
-  <footer>С огромной любовью и нетерпением ждём вас<br>Никита и Анастасия ♡</footer>
+    <!-- КАРТА -->
+    <div class="glass-card" id="section-map">
+      <h2>Как нас найти</h2>
+      <div class="map-wrapper">
+        <div style="position:relative;overflow:hidden;">
+          <a href="https://yandex.ru/maps/org/oktyabrskiy/1759042964/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Октябрьский</a>
+          <a href="https://yandex.ru/maps/195/ulyanovsk/category/restaurant/184106394/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Ресторан в Ульяновске</a>
+          <iframe 
+            src="https://yandex.ru/map-widget/v1/?ll=48.402584%2C54.310752&mode=poi&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1759042964&z=20" 
+            width="100%" 
+            height="400" 
+            frameborder="0" 
+            allowfullscreen="true" 
+            style="position:relative; display: block;">
+          </iframe>
+        </div>
+      </div>
+      <div style="margin-top: 1rem; font-size: 0.85rem; text-align: center;">
+        <a href="https://yandex.ru/maps/org/oktyabrskiy/1759042964/" target="_blank" style="color: #8b855a; text-decoration: underline;">🗺️ Открыть ресторан "Октябрьский" на карте →</a>
+      </div>
+    </div>
+
+    <!-- RSVP -->
+    <div class="rsvp-section">
+      <div class="glass-card" style="background: rgba(245, 241, 226, 0.92); text-align: center;">
+        <h2 style="border-left: none; text-align: center; padding-left: 0;">Готовы ли вы разделить с нами этот день?</h2>
+        <div class="button-group">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3wpl5X2Lu4HjgNmSiEsVHcKJoOw6R0I92Zvvy8wFHpBAmYA/viewform?usp=pp_url" target="_blank" class="btn-modern">📋 Ответьте на пару вопросов →</a>
+        </div>
+        <p style="font-size: 0.8rem; margin-top: 1.5rem;">Ваши ответы помогут нам при организации нашего торжества.</p>
+      </div>
+    </div>
+
+    <footer>
+      С любовью, теплом и оттенками хаки ❤️<br>
+      Никита и Анастасия • 17.07.2026
+    </footer>
+  </div>
 </div>
 
 <script>
-// Плавное появление блоков
-const sections = document.querySelectorAll('.section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+  // Открытие конверта
+  const overlay = document.getElementById('envelopeOverlay');
+  const envelope = document.getElementById('envelope');
+  const waxSeal = document.getElementById('waxSeal');
+  const mainContent = document.getElementById('mainContent');
+
+  function openInvitation() {
+    if (!envelope.classList.contains('open')) {
+      envelope.classList.add('open');
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+        mainContent.classList.add('visible');
+        
+        setTimeout(() => {
+          const cards = document.querySelectorAll('.glass-card');
+          cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 80) {
+              card.classList.add('visible');
+            } else {
+              const obs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+              }, { threshold: 0.2 });
+              obs.observe(card);
+            }
+          });
+        }, 200);
+      }, 550);
     }
+  }
+
+  if (waxSeal) {
+    waxSeal.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openInvitation();
+    });
+  }
+  
+  envelope.addEventListener('click', (e) => {
+    if (e.target === waxSeal || waxSeal.contains(e.target)) return;
+    openInvitation();
   });
-}, { threshold: 0.15 });
 
-sections.forEach(section => observer.observe(section));
+  // ТАЙМЕР
+  function getTimeRemaining(endtime) {
+    const total = Date.parse(endtime) - Date.now();
+    if (total <= 0) return { total: 0, days: 0, hours: 0, minutes: 0, seconds: 0 };
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours   = Math.floor((total / (1000 * 60 * 60)) % 24);
+    const days    = Math.floor(total / (1000 * 60 * 60 * 24));
+    return { total, days, hours, minutes, seconds };
+  }
 
-// Таймер
-function getTimeRemaining(endtime) {
-  const total = Date.parse(endtime) - Date.now();
-  const seconds = Math.floor((total / 1000) % 60);
-  const minutes = Math.floor((total / 1000 / 60) % 60);
-  const hours   = Math.floor((total / (1000 * 60 * 60)) % 24);
-  const days    = Math.floor(total / (1000 * 60 * 60 * 24));
-  return { total, days, hours, minutes, seconds };
-}
-
-function initializeClock(id, endtime) {
-  const timeinterval = setInterval(() => {
-    const t = getTimeRemaining(endtime);
-    document.getElementById('days').innerHTML    = ('0' + t.days).slice(-2);
-    document.getElementById('hours').innerHTML   = ('0' + t.hours).slice(-2);
-    document.getElementById('minutes').innerHTML = ('0' + t.minutes).slice(-2);
-    document.getElementById('seconds').innerHTML = ('0' + t.seconds).slice(-2);
-
+  function updateClock() {
+    const deadline = '2026-07-17T15:00:00+04:00';
+    const t = getTimeRemaining(deadline);
+    const daysElem = document.getElementById('days');
+    const hoursElem = document.getElementById('hours');
+    const minutesElem = document.getElementById('minutes');
+    const secondsElem = document.getElementById('seconds');
+    if (daysElem) daysElem.innerHTML = ('0' + t.days).slice(-2);
+    if (hoursElem) hoursElem.innerHTML = ('0' + t.hours).slice(-2);
+    if (minutesElem) minutesElem.innerHTML = ('0' + t.minutes).slice(-2);
+    if (secondsElem) secondsElem.innerHTML = ('0' + t.seconds).slice(-2);
+    
     if (t.total <= 0) {
-      document.getElementById(id).innerHTML = "Мы уже вместе навсегда ♡";
-      clearInterval(timeinterval);
+      const grid = document.getElementById('countdownGrid');
+      if (grid && !grid.querySelector('.finish-message')) {
+        const doneMsg = document.createElement('div');
+        doneMsg.className = 'finish-message';
+        doneMsg.style.width = '100%';
+        doneMsg.style.textAlign = 'center';
+        doneMsg.style.marginTop = '1rem';
+        doneMsg.style.fontSize = '1.3rem';
+        doneMsg.style.fontFamily = "'Playfair Display', serif";
+        doneMsg.style.color = '#a09468';
+        doneMsg.innerHTML = '♡ Сегодня наш день! ♡';
+        grid.appendChild(doneMsg);
+      }
+      const nums = document.querySelectorAll('.cd-number');
+      nums.forEach(el => el.innerHTML = '00');
     }
-  }, 1000);
-}
-
+  }
+  
+  updateClock();
+  setInterval(updateClock, 1000);
+  
+  // анимация сердца
+  const heartEl = document.querySelector('.heart-icon');
+  if (heartEl) {
+    setInterval(() => {
+      heartEl.style.textShadow = '0 0 6px rgba(227, 66, 52, 0.5)';
+      setTimeout(() => {
+        heartEl.style.textShadow = '0 4px 10px rgba(200, 60, 50, 0.3)';
+      }, 200);
+    }, 1600);
+  }
+</script>
+</body>
+</html>
 const deadline = '2026-07-17T15:00:00';
 initializeClock('countdown', deadline);
 </script>
